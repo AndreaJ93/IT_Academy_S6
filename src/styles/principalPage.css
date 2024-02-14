@@ -1,0 +1,11 @@
+.background {
+  background-image: url(../assets/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
+
+.onHover {
+  background-color: #E4D1C0;
+}

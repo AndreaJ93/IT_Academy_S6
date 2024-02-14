@@ -1,0 +1,21 @@
+.searchButton:focus {
+  font-weight: bold;
+}
+
+.focusNone:focus{
+  transform: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Quitar close */
+input[type="search"]::-webkit-search-clear-button,
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+#searching{
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
