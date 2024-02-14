@@ -4,7 +4,7 @@ import useService from "../hooks/useService";
 import BudgetsInProgress from "./BudgetsInProgress";
 import { useBudgetProvider } from "../context/BudgetProvider";
 
-function AskForBudget() {
+function AskForBudget({ isSaving }) {
   const { total, serviceDataArray } = useService();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -26,7 +26,7 @@ function AskForBudget() {
       web: web,
       pages: pages,
       languages: languages,
-      total: total,
+      total: isSaving ? total * 0.8 : total,
       id: budgetData.length,
     });
   }

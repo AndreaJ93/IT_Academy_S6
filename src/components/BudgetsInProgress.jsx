@@ -117,9 +117,11 @@ function BudgetsInProgress() {
             .map((budget, index) => (
               <BudgetCard key={index} index={index} card={budget}></BudgetCard>
             ))
-        : budgetData.map((budget, index) => (
-            <BudgetCard key={index} index={index} card={budget}></BudgetCard>
-          ))}
+        : budgetData.map((budget, index) =>
+            budget.name !== undefined ? (
+              <BudgetCard key={index} index={index} card={budget}></BudgetCard>
+            ) : null
+          )}
     </div>
   );
 }

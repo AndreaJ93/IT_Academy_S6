@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 import useService from "../hooks/useService";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import WebOptions from "./WebOptions";
+import "../styles/principalPage.css";
 
-export default function ServiceCard({
-  index,
-  setServiceDataArray,
-  serviceDataArray,
-}) {
+export default function ServiceCard({ index, setServiceDataArray, isSaving }) {
   const { serviceData, total, setTotal } = useService();
   const nonSelectedArray = [false, false, false];
   const [selected, setSelected] = useState(nonSelectedArray);
@@ -46,16 +43,36 @@ export default function ServiceCard({
     setNumLanguages(languages);
   }
 
+  let isCheckedID = "shadow rounded-4 my-5 p-5";
+  isChecked
+    ? (isCheckedID = "checkedID rounded-4 my-5 p-5")
+    : "shadow rounded-4 my-5 p-5";
+
   return (
     <main className="w-75 mx-auto">
-      <Container className="shadow rounded-4 my-5 p-5">
+      <Container className={isCheckedID}>
         <Row>
           <Col xs={12} md={6} lg={6}>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
           </Col>
           <Col xs={6} md={3} lg={3}>
-            <h2>{service.price}€</h2>
+            {isSaving ? (
+              <>
+                <p
+                  style={{
+                    color: "orange",
+                    textAlign: "center",
+                    marginBottom: "0px",
+                  }}
+                >
+                  Estalvia un 20%
+                </p>
+                <h2 className="text-center">{service.price * 0.8}€</h2>
+              </>
+            ) : (
+              <h2 className="text-center">{service.price}€</h2>
+            )}
           </Col>
           <Col xs={6} md={3} lg={3}>
             <Form className="d-grid justify-content-end">
