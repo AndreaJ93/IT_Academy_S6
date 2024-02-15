@@ -19,3 +19,7 @@ input[type="search"]::-webkit-search-cancel-button {
 #searching{
   box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
 }
+
+.shadowChecked {
+  box-shadow: 0px 0px 10px #54B588;
+}

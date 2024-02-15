@@ -1,4 +1,7 @@
-import { Col, Container } from "react-bootstrap";
+import { Button, Col, Container, Form, FormCheck } from "react-bootstrap";
+import "../styles/budgetsInProgress.css";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function BudgetCard({ card }) {
   // const [name, phone, email, total, seo, ads, web, pages, languages] = card;
@@ -15,6 +18,17 @@ function BudgetCard({ card }) {
     languageOrLanguages = "llenguatge";
   } else {
     languageOrLanguages = "llenguatges";
+  }
+
+  const [url, setUrl] = useState(false);
+  console.log(card.seo);
+
+  function getUrl() {
+    setUrl(!url);
+    let urlSingleBudget = `/singleBudget/${card.seo}/${card.ads}/${card.web}/${card.pages}/${card.languages}`;
+    // seo={card.seo}&ads={card.ads}&web=
+    //       {card.web}&pages={card.pages}&lang={card.languages};
+    console.log(urlSingleBudget);
   }
 
   return (
@@ -39,6 +53,22 @@ function BudgetCard({ card }) {
         <p className="pb-1 m-0">Total:</p>
         <h4 className="fw-bold">{card.total} €</h4>
       </Col>
+      <Button
+        className="border-0 bg-transparent w-25 text-black mt-3 text-end"
+        onClick={getUrl}
+      >
+        URL ⇨
+      </Button>
+      {url ? (
+        <Link
+          to={`/singleBudget/${card.seo}/${card.ads}/${card.web}/${card.pages}/${card.languages}`}
+          className="w-50 mb-0 mt-3 d-grid align-content-center"
+        >
+          http://localhost:5173/singleBudget/{card.seo ? "true" : "false"}/
+          {card.ads ? "true" : "false"}/{card.web ? "true" : "false"}/
+          {card.pages}/{card.languages}
+        </Link>
+      ) : null}
     </Container>
   );
 }

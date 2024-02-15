@@ -35,6 +35,8 @@ function AskForBudget({ isSaving }) {
     addBudget(budget);
   }, [budget]);
 
+  console.log(budgetData);
+
   return (
     <div className="w-75 mx-auto mb-5">
       <Container className="shadow rounded-4 my-5 px-5 py-4 row justify-content-between">
