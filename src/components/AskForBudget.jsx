@@ -2,7 +2,7 @@ import { Container, Form, Button, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import useService from "../hooks/useService";
 import BudgetsInProgress from "./BudgetsInProgress";
-import { useBudgetProvider } from "../context/BudgetProvider";
+import useBudgetProvider from "../hooks/useBudgetProvider";
 
 function AskForBudget({ isSaving }) {
   const { total, serviceDataArray } = useService();
@@ -17,7 +17,6 @@ function AskForBudget({ isSaving }) {
     const [seo, ads, web] = services;
 
     setBudget({
-      // ...budget,
       name: name,
       phone: phone,
       email: email,
@@ -34,8 +33,6 @@ function AskForBudget({ isSaving }) {
   useEffect(() => {
     addBudget(budget);
   }, [budget]);
-
-  console.log(budgetData);
 
   return (
     <div className="w-75 mx-auto mb-5">

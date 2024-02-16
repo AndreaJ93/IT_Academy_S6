@@ -1,10 +1,9 @@
 import { Button, Col, Container, Form, FormCheck } from "react-bootstrap";
 import "../styles/budgetsInProgress.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function BudgetCard({ card }) {
-  // const [name, phone, email, total, seo, ads, web, pages, languages] = card;
   let pageOrpages = "";
   let languageOrLanguages = "";
 
@@ -21,14 +20,9 @@ function BudgetCard({ card }) {
   }
 
   const [url, setUrl] = useState(false);
-  console.log(card.seo);
 
   function getUrl() {
     setUrl(!url);
-    let urlSingleBudget = `/singleBudget/${card.seo}/${card.ads}/${card.web}/${card.pages}/${card.languages}`;
-    // seo={card.seo}&ads={card.ads}&web=
-    //       {card.web}&pages={card.pages}&lang={card.languages};
-    console.log(urlSingleBudget);
   }
 
   return (

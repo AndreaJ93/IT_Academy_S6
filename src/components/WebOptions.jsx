@@ -24,24 +24,24 @@ export default function WebOptions({ setPriceOptions, numPagesLanguages }) {
     setPriceOptions(totalPriceOptions);
   }
 
-  function reducePages() {
-    if (pages != 0) {
-      setPages(pages - 1);
+  function reducePagesOrLanguages(x) {
+    if (x === "pages") {
+      if (pages != 0) {
+        setPages(pages - 1);
+      }
+    } else {
+      if (languages != 0) {
+        setLanguages(languages - 1);
+      }
     }
   }
 
-  function addPages() {
-    setPages(pages + 1);
-  }
-
-  function reduceLanguages() {
-    if (languages != 0) {
-      setLanguages(languages - 1);
+  function addPagesOrLanguages(x) {
+    if (x === "pages") {
+      setPages(pages + 1);
+    } else {
+      setLanguages(languages + 1);
     }
-  }
-
-  function addLanguages() {
-    setLanguages(languages + 1);
   }
 
   return (
@@ -72,7 +72,7 @@ export default function WebOptions({ setPriceOptions, numPagesLanguages }) {
                 borderColor: "#DDE1E5",
                 color: "grey",
               }}
-              onClick={reducePages}
+              onClick={() => reducePagesOrLanguages("pages")}
             >
               -
             </Button>
@@ -97,7 +97,7 @@ export default function WebOptions({ setPriceOptions, numPagesLanguages }) {
                 borderColor: "#DDE1E5",
                 color: "grey",
               }}
-              onClick={addPages}
+              onClick={() => addPagesOrLanguages("pages")}
             >
               +
             </Button>
@@ -131,7 +131,7 @@ export default function WebOptions({ setPriceOptions, numPagesLanguages }) {
                 borderColor: "#DDE1E5",
                 color: "grey",
               }}
-              onClick={reduceLanguages}
+              onClick={() => reducePagesOrLanguages("languages")}
             >
               -
             </Button>
@@ -156,7 +156,7 @@ export default function WebOptions({ setPriceOptions, numPagesLanguages }) {
                 borderColor: "#DDE1E5",
                 color: "grey",
               }}
-              onClick={addLanguages}
+              onClick={() => addPagesOrLanguages("languages")}
             >
               +
             </Button>

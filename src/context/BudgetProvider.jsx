@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
-const BudgetContext = createContext();
+export const BudgetContext = createContext();
 
 const BudgetProvider = ({ children }) => {
   const [budgetData, setBudgetData] = useState([]);
@@ -12,6 +12,7 @@ const BudgetProvider = ({ children }) => {
     setBudgetData(storedBudgetData);
   }, []);
 
+  //agregar nuevos datos al array
   const addBudget = (newBudget) => {
     setBudgetData([...budgetData, newBudget]);
   };
@@ -31,10 +32,6 @@ const BudgetProvider = ({ children }) => {
       {children}
     </BudgetContext.Provider>
   );
-};
-
-export const useBudgetProvider = () => {
-  return useContext(BudgetContext);
 };
 
 export default BudgetProvider;

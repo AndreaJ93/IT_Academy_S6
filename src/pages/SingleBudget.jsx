@@ -10,7 +10,6 @@ function SingleBudget() {
   let web = urlInParts[4];
   let pages = urlInParts[5];
   let lang = urlInParts[6];
-  console.log(urlInParts);
 
   let total =
     (seo === "true" ? 300 : null) +
@@ -38,7 +37,7 @@ function SingleBudget() {
   return (
     <>
       <Link to="/principalPage">
-        <Button className="btn rounded-3 text-white shadow onHover">
+        <Button className="btn border-0 rounded-3 text-white shadow onHover">
           ⭠ Pàgina Principal
         </Button>
       </Link>

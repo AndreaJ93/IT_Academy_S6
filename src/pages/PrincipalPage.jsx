@@ -1,45 +1,51 @@
-import ServiceContext from "../context/ServiceContext";
 import ServiceCard from "../components/ServiceCard";
 import { Container } from "react-bootstrap";
 import "../styles/principalPage.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import AskForBudget from "../components/AskForBudget";
-import BudgetsInProgress from "../components/BudgetsInProgress";
 import BudgetProvider from "../context/BudgetProvider";
 import AnualBudget from "../components/AnualBudget";
+import ServiceProvider from "../context/ServiceContext";
+
+const serviceData = [
+  {
+    title: "SEO",
+    description: "Campanya SEO completa per a la teva web.",
+    price: 300,
+    form: false,
+  },
+  {
+    title: "Ads",
+    description: "Campanya de publicitat completa per a la teva web.",
+    price: 400,
+    form: false,
+  },
+  {
+    title: "Web",
+    description: "Programació d'una web responsive completa.",
+    price: 500,
+    form: true,
+  },
+];
 
 function PrincipalPage() {
-  const serviceData = [
-    {
-      title: "SEO",
-      description: "Campanya SEO completa per a la teva web.",
-      price: 300,
-      form: false,
-    },
-    {
-      title: "Ads",
-      description: "Campanya de publicitat completa per a la teva web.",
-      price: 400,
-      form: false,
-    },
-    {
-      title: "Web",
-      description: "Programació d'una web responsive completa.",
-      price: 500,
-      form: true,
-    },
-  ];
-
   const [total, setTotal] = useState(0);
 
   const [serviceDataArray, setServiceDataArray] = useState([]);
+
   const [isSaving, setIsSaving] = useState(false);
 
+  const contextServiceValue = {
+    serviceData,
+    total,
+    setTotal,
+    serviceDataArray,
+    setServiceDataArray,
+  };
+
   return (
-    <ServiceContext.Provider
-      value={{ serviceData, total, setTotal, serviceDataArray }}
-    >
+    <ServiceProvider data={contextServiceValue}>
       <BudgetProvider>
         <Link to="/">
           <button className="btn rounded-3 text-white shadow onHover">
@@ -54,7 +60,7 @@ function PrincipalPage() {
           isSaving={isSaving}
           setIsSaving={setIsSaving}
         ></AnualBudget>
-        {serviceData.map((service, index) => (
+        {serviceData.map((_, index) => (
           <ServiceCard
             key={index}
             index={index}
@@ -78,7 +84,7 @@ function PrincipalPage() {
         </div>
         <AskForBudget isSaving={isSaving}></AskForBudget>
       </BudgetProvider>
-    </ServiceContext.Provider>
+    </ServiceProvider>
   );
 }
 

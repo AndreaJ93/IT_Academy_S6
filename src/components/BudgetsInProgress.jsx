@@ -2,8 +2,8 @@ import { Button, Col, Form } from "react-bootstrap";
 
 import BudgetCard from "./BudgetCard";
 import "../styles/budgetsInProgress.css";
-import { useEffect, useState } from "react";
-import { useBudgetProvider } from "../context/BudgetProvider";
+import { useState } from "react";
+import useBudgetProvider from "../hooks/useBudgetProvider";
 
 const arrowDown = (
   <svg
@@ -111,9 +111,7 @@ function BudgetsInProgress() {
             ))
         : searching
         ? budgetData
-            .filter((budget) =>
-              budget.name.toLowerCase().includes(nom.toLowerCase())
-            )
+            .filter((budget) => budget.name.toLowerCase().includes(nom))
             .map((budget, index) => (
               <BudgetCard key={index} index={index} card={budget}></BudgetCard>
             ))

@@ -1,12 +1,11 @@
 import { createContext } from "react";
 
-const ServiceContext = createContext([
-  {
-    title: null,
-    description: null,
-    price: null,
-    form: false,
-  },
-]);
+export const ServiceContext = createContext();
 
-export default ServiceContext;
+const ServiceProvider = ({ children, data }) => {
+  return (
+    <ServiceContext.Provider value={data}>{children}</ServiceContext.Provider>
+  );
+};
+
+export default ServiceProvider;
