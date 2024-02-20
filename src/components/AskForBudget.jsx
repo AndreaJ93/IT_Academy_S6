@@ -9,7 +9,7 @@ function AskForBudget({ isSaving }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [budget, setBudget] = useState({});
+  const [budget, setBudget] = useState(null);
   const { addBudget, budgetData } = useBudgetProvider();
 
   function handleOnSubmit() {
